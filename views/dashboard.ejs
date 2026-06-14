@@ -1,0 +1,35 @@
+<%- include('partials/header') -%>
+
+<div class="auth-container">
+    <div class="auth-box dashboard-box">
+        <div class="dashboard-hero">
+            <h1>Dashboard</h1>
+            <p>Welcome back! Here is a summary of your account activity.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="metric-card">
+                <span class="metric-title">Account Status</span>
+                <span class="metric-value status-active">Active</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-title">Security Level</span>
+                <span class="metric-value">High</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-title">Last Login</span>
+                <span class="metric-value time-value">Just Now</span>
+            </div>
+        </div>
+
+        <div class="dashboard-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons-row">
+                <button type="button" class="dash-btn btn-secondary" onclick="window.location.href='/dashboard'">Update Profile</button>
+                <button type="button" class="dash-btn btn-danger" onclick="window.location.href='/logout'">Log Out</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
