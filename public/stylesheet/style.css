@@ -394,3 +394,366 @@ nav a:first-child {
     color: #991b1b;
     border-color: #fecaca;
 }
+
+
+
+/* ==========================================
+   PREMIUM LANDING PAGE OVERRIDES & KEYFRAMES
+   ========================================== */
+
+:root {
+    --bg-dark: #0f1115;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --primary-accent: #e50914; /* Vibrant Crimson Red */
+    --text-main: #f5f6f8;
+    --text-muted: #98a2b3;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+.landing-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slowFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes radialPulse {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.2); opacity: 0.4; }
+}
+
+/* --- SECTION 1: HERO --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 0 60px 0;
+    min-height: 80vh;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.badge {
+    background: rgba(225, 9, 20, 0.1);
+    color: var(--primary-accent);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(225, 9, 20, 0.2);
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+}
+
+.accent-text {
+    color: var(--primary-accent);
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 36px;
+}
+
+.cta-group {
+    display: flex;
+    gap: 16px;
+}
+
+.btn {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background-color: var(--primary-accent);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(229, 9, 20, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+    background-color: #ff1e27;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-visual {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.floating-cube {
+    font-size: 5rem;
+    animation: slowFloat 6s ease-in-out infinite;
+    z-index: 2;
+}
+
+.glow-orb {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(229,9,20,0.3) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    z-index: 1;
+    animation: radialPulse 4s ease-in-out infinite;
+}
+
+/* --- SECTION 2: METRICS --- */
+.metrics-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 60px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.metric-card {
+    text-align: center;
+}
+
+.metric-card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.metric-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* --- COMMON SECTION LAYOUTS --- */
+.section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-heading h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: var(--text-muted);
+}
+
+/* --- SECTION 3: FEATURES --- */
+.features-section {
+    padding: 100px 0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px 32px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(229, 9, 20, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.feature-card .icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* --- SECTION 4: WORKFLOW --- */
+.workflow-section {
+    padding: 60px 0 100px 0;
+}
+
+.workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+}
+
+.step {
+    position: relative;
+}
+
+.step-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.step h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.step p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- SECTION 5: INFO BANNER --- */
+.info-banner-section {
+    padding: 40px 0;
+}
+
+.banner-box {
+    background: linear-gradient(90deg, rgba(229,9,20,0.08) 0%, rgba(255,255,255,0.02) 100%);
+    border-left: 4px solid var(--primary-accent);
+    padding: 40px;
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.banner-box h3 {
+    font-size: 1.5rem;
+}
+
+.banner-box p {
+    color: var(--text-muted);
+}
+
+.inline-link {
+    color: var(--primary-accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.inline-link:hover {
+    opacity: 0.8;
+}
+
+/* --- SECTION 6: BOTTOM CTA --- */
+.bottom-cta-section {
+    padding: 100px 0 140px 0;
+}
+
+.cta-card {
+    background: radial-gradient(circle at top right, rgba(229,9,20,0.15), transparent), var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 60px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+}
+
+.cta-card p {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- RESPONSIVE OVERRIDES --- */
+@media (max-width: 968px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 60px;
+    }
+    .hero-content {
+        margin-bottom: 40px;
+    }
+    .cta-group {
+        justify-content: center;
+    }
+    .hero-visual {
+        width: 300px;
+        height: 300px;
+    }
+    .metrics-section, .feature-grid, .workflow-steps {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
