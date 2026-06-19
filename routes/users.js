@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/usermodel');
 const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
 
 function ensureAuth(req, res, next) {
     if (req.isAuthenticated && req.isAuthenticated()) return next();
@@ -30,22 +31,21 @@ router.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
-        // 1. Check for duplicate Email (since it's your primary usernameField)
+        // 1. Check for duplicate Email
         const existingEmail = await User.findOne({ email });
         if (existingEmail) {
             req.flash('error_msg', 'An account with this email already exists. Please log in.');
             return res.redirect('/signup');
         }
 
-        // 2. Check for duplicate Username (as an extra field safety)
-        const existingUsername = await User.findOne({ username });
-        if (existingUsername) {
-            req.flash('error_msg', 'This username is already taken.');
-            return res.redirect('/signup');
-        }
-
-        // 3. Register directly using standard async/await (No manual Promise block needed)
-        const newUser = new User({ username, email });
+        // 2. CRITICAL FIX: Flatten the configuration object. 
+        // Do not wrap it in a nested variable wrapper like 'userData'.
+        const newUser = new User({ 
+            username: username, 
+            email: email 
+        });
+        
+        // 3. Register the user profile safely
         await User.register(newUser, password);
 
         req.flash('success_msg', 'User registered successfully!');
@@ -54,7 +54,6 @@ router.post('/signup', async (req, res) => {
     } catch (err) {
         console.error("Signup Error: ", err);
         
-        // 4. Catch any unexpected library duplicate validation errors safely
         if (err.name === 'UserExistsError' || /already registered|exists/i.test(err.message)) {
             req.flash('error_msg', 'An account with those details already exists.');
         } else {

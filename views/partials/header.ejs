@@ -13,10 +13,13 @@
     
 <nav>
     <a href="/">AuthApp</a>
-
-    <a href="/">Username</a>
+    <% if(currentUser) { %>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/"><%= currentUser.username %></a>
     <a href="/login">Change Password</a>
-    <a href="/register">Logout</a>
+    <a href="/logout">Logout</a>
+    <% } %>
+    
 
 
        

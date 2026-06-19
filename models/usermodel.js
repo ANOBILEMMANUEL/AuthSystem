@@ -6,7 +6,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+
   },
+
+  username: {          // 1. ADD THIS FIELD
+    type: String,
+    required: true // Set to true if it's mandatory during signup
+  }
+
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
